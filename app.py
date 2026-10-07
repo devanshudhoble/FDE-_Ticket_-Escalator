@@ -125,4 +125,7 @@ with gr.Blocks(title="FDE Ticket Escalator") as demo:
     submit_btn.click(fn=process_ticket, inputs=ticket_input, outputs=[output_summary, output_logs])
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", share=True)
+    demo.launch(server_name="0.0.0.0", share=True, prevent_thread_lock=True)
+    with open("url.txt", "w") as f:
+        f.write(str(demo.share_url))
+
